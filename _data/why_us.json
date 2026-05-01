@@ -1,0 +1,22 @@
+{
+  "title": "Why Choose Langchao Fire",
+  "subtitle": "Over six decades of innovation in fire suppression chemistry, backed by international certifications and a commitment to environmental responsibility.",
+  "image": "/images/office-building.jpg",
+  "features": [
+    {
+      "icon": "🔬",
+      "title": "In-House R&D Laboratory",
+      "desc": "Continuous product improvement and custom formulation development for unique client requirements."
+    },
+    {
+      "icon": "🌱",
+      "title": "Eco-Conscious Formulations",
+      "desc": "PFAS-free and low-fluorine options available, meeting emerging environmental regulations globally."
+    },
+    {
+      "icon": "🚀",
+      "title": "Fast Global Delivery",
+      "desc": "Efficient logistics network with export experience to 30+ countries across all major trade routes."
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "title": "About Langchao Fire",
+  "intro": "Luoyang Langchao Fire Technology Co., Ltd. is one of China's most established manufacturers of fire fighting foam concentrates and suppression chemicals. Founded in 1954, we have grown from a regional supplier into a globally recognised brand trusted by oil refineries, airports, military facilities, and marine operators in over 30 countries.\n\nOur production base spans more than 60,000 square metres in Luoyang, Henan Province, with an annual output capacity exceeding 200,000 metric tons. Every product line is developed and validated in our in-house laboratory by a team of over 80 engineers and chemists.",
+  "image": "/images/office-building.jpg",
+  "stats": [
+    { "value": "1954", "label": "Year Founded" },
+    { "value": "200K+", "label": "Tons Annual Output" },
+    { "value": "30+", "label": "Countries Served" },
+    { "value": "8", "label": "International Certifications" }
+  ],
+  "timeline": [
+    { "year": "1954", "event": "Founded as a state-owned fire chemical research and production unit in Luoyang, Henan Province." },
+    { "year": "1978", "event": "Expanded production capacity and began supplying foam concentrates to national oil and petrochemical enterprises." },
+    { "year": "1995", "event": "Obtained ISO 9001 Quality Management System certification, establishing formal quality control processes." },
+    { "year": "2003", "event": "Achieved EN 1568 European standard certification for fluoroprotein and AFFF foam concentrates." },
+    { "year": "2008", "event": "Received ICAO Level B certification for aviation crash fire rescue (CFR) foam concentrates." },
+    { "year": "2012", "event": "Obtained CCS (China Classification Society) and MED (Marine Equipment Directive) certifications for marine applications." },
+    { "year": "2018", "event": "Launched C6 pure fluorosurfactant product line and began transitioning customers to PFAS-compliant formulations." },
+    { "year": "2022", "event": "Completed expansion of production facility to 60,000 m², increasing annual capacity to over 200,000 metric tons." }
+  ]
+}

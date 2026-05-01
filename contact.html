@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | Langchao Fire Technology — Get a Quote</title>
+  <meta name="description" content="Contact Langchao Fire Technology for product inquiries, quotes, technical support, and certification documentation. Based in Luoyang, China. Serving 30+ countries." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .map-embed {
+      width: 100%;
+      height: 380px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: var(--dark-3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--light-mid);
+      font-size: 0.9rem;
+      position: relative;
+    }
+    .map-embed iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      filter: invert(90%) hue-rotate(180deg);
+    }
+    .faq-item {
+      background: var(--dark-2);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius-md);
+      margin-bottom: 0.75rem;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+    .faq-item.open { border-color: rgba(192,57,43,0.3); }
+    .faq-question {
+      padding: 1.25rem 1.5rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      font-weight: 600;
+      font-size: 0.92rem;
+      color: var(--white);
+      user-select: none;
+    }
+    .faq-arrow { font-size: 1.1rem; color: var(--primary-light); transition: transform 0.3s ease; flex-shrink: 0; }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.3s ease;
+      padding: 0 1.5rem;
+      font-size: 0.85rem;
+      color: var(--light-mid);
+      line-height: 1.7;
+    }
+    .faq-item.open .faq-answer { max-height: 300px; padding: 0 1.5rem 1.25rem; }
+  </style>
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="container">
+    <div class="top-bar-left">
+      <a href="mailto:info@langchaofires.com">✉ info@langchaofires.com</a>
+      <a href="tel:+8618603791306">📞 +86 186 0379 1306</a>
+    </div>
+    <div class="top-bar-right">
+      <div class="social-links"><a href="#">f</a><a href="#">in</a><a href="#">▶</a><a href="#">ig</a></div>
+      <a href="#" style="font-size:0.75rem;color:#9CA3AF;border:1px solid rgba(255,255,255,0.1);padding:0.25rem 0.6rem;border-radius:4px;">中文版</a>
+    </div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="images/logo.jpg" alt="LCF Langchao Fire" class="nav-logo-img" />
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="products.html">Products</a>
+        <a href="certifications.html">Certifications</a>
+        <a href="contact.html" class="active">Contact</a>
+      </div>
+      <div class="nav-cta">
+        <a href="contact.html" class="btn-primary" style="padding:0.6rem 1.25rem;font-size:0.8rem;">Get a Quote</a>
+      </div>
+      <button class="nav-menu-toggle" id="menuToggle"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-close" id="mobileNavClose">✕</button>
+  <a href="index.html">Home</a><a href="about.html">About</a>
+  <a href="products.html">Products</a><a href="certifications.html">Certifications</a>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="btn-primary" style="margin-top:1rem;">Get a Quote</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero" style="padding:7rem 0 5rem;">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><span>Contact</span></div>
+    <div class="section-tag">Get In Touch</div>
+    <h1 class="section-title" style="font-size:clamp(2.5rem,5vw,4rem);">Let's Talk <span>Fire Protection</span></h1>
+    <p class="section-subtitle" style="max-width:600px;">Whether you need a product quote, technical documentation, custom formulation, or general information — our expert team is ready to assist.</p>
+  </div>
+</section>
+
+<!-- QUICK CONTACT CARDS -->
+<section style="padding:3rem 0 0; background:var(--dark);">
+  <div class="container">
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:1.25rem;">
+
+      <div class="fade-in" style="background:var(--dark-2);border:1px solid rgba(255,255,255,0.07);border-radius:var(--radius-md);padding:1.75rem;text-align:center;transition:var(--transition);" onmouseover="this.style.borderColor='rgba(192,57,43,0.4)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.07)';this.style.transform=''">
+        <div style="font-size:2rem;margin-bottom:0.75rem;">📞</div>
+        <div style="font-family:var(--font-heading);font-size:0.85rem;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:var(--light-mid);margin-bottom:0.5rem;">Phone / WhatsApp</div>
+        <a href="tel:+8618603791306" style="font-size:1rem;font-weight:700;color:var(--white);">+86 186 0379 1306</a>
+        <div style="font-size:0.75rem;color:var(--light-mid);margin-top:0.4rem;">Mon–Sat, 8:00–18:00 CST</div>
+      </div>
+
+      <div class="fade-in delay-1" style="background:var(--dark-2);border:1px solid rgba(255,255,255,0.07);border-radius:var(--radius-md);padding:1.75rem;text-align:center;transition:var(--transition);" onmouseover="this.style.borderColor='rgba(192,57,43,0.4)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.07)';this.style.transform=''">
+        <div style="font-size:2rem;margin-bottom:0.75rem;">✉️</div>
+        <div style="font-family:var(--font-heading);font-size:0.85rem;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:var(--light-mid);margin-bottom:0.5rem;">Email</div>
+        <a href="mailto:info@langchaofires.com" style="font-size:0.95rem;font-weight:700;color:var(--white);">info@langchaofires.com</a>
+        <div style="font-size:0.75rem;color:var(--light-mid);margin-top:0.4rem;">Reply within 24 hours</div>
+      </div>
+
+      <div class="fade-in delay-2" style="background:var(--dark-2);border:1px solid rgba(255,255,255,0.07);border-radius:var(--radius-md);padding:1.75rem;text-align:center;transition:var(--transition);" onmouseover="this.style.borderColor='rgba(192,57,43,0.4)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.07)';this.style.transform=''">
+        <div style="font-size:2rem;margin-bottom:0.75rem;">📍</div>
+        <div style="font-family:var(--font-heading);font-size:0.85rem;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:var(--light-mid);margin-bottom:0.5rem;">Factory Address</div>
+        <div style="font-size:0.85rem;font-weight:600;color:var(--white);line-height:1.5;">No.119, Longgu Rd., Yibin<br>Luoyang, Henan 471000</div>
+      </div>
+
+      <div class="fade-in delay-3" style="background:var(--gradient-fire);border-radius:var(--radius-md);padding:1.75rem;text-align:center;box-shadow:var(--shadow-fire);transition:var(--transition);" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform=''">
+        <div style="font-size:2rem;margin-bottom:0.75rem;">📋</div>
+        <div style="font-family:var(--font-heading);font-size:0.85rem;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.85);margin-bottom:0.5rem;">Download Catalog</div>
+        <div style="font-size:0.85rem;font-weight:700;color:var(--white);margin-bottom:0.75rem;">Full Product Catalog 2024</div>
+        <a href="#contact-form" style="display:inline-block;background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.3);border-radius:100px;padding:0.35rem 1rem;font-size:0.75rem;font-weight:700;color:white;letter-spacing:0.06em;text-transform:uppercase;">Request PDF</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- MAIN CONTACT SECTION -->
+<section style="padding:5rem 0 7rem; background:var(--dark);" id="contact-form">
+  <div class="container">
+    <div style="display:grid; grid-template-columns:1fr 1.2fr; gap:4rem; align-items:start;">
+
+      <!-- LEFT: Info + Map -->
+      <div>
+        <div class="section-tag">Inquiry Form</div>
+        <h2 class="section-title" style="font-size:2.2rem;">Send Us a <span>Message</span></h2>
+        <p style="color:var(--light-mid);font-size:0.9rem;line-height:1.7;margin-bottom:2rem;">Fill in the form and one of our export specialists will contact you within 24 hours with product details, pricing, and availability information.</p>
+
+        <!-- Response Guarantee -->
+        <div style="background:rgba(192,57,43,0.08);border:1px solid rgba(192,57,43,0.2);border-radius:var(--radius-md);padding:1.25rem 1.5rem;margin-bottom:2rem;display:flex;gap:1rem;align-items:flex-start;">
+          <span style="font-size:1.5rem;flex-shrink:0;">⚡</span>
+          <div>
+            <div style="font-weight:700;color:var(--white);font-size:0.92rem;margin-bottom:0.2rem;">Fast Response Guaranteed</div>
+            <div style="font-size:0.82rem;color:var(--light-mid);">All inquiries are responded to within 24 hours on business days. For urgent requests, call us directly or send via WhatsApp.</div>
+          </div>
+        </div>
+
+        <!-- What to expect -->
+        <h4 style="font-family:var(--font-heading);font-size:0.9rem;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:var(--white);margin-bottom:1rem;">What Happens Next?</h4>
+        <div style="display:flex;flex-direction:column;gap:0.85rem;margin-bottom:2.5rem;">
+          <div style="display:flex;gap:1rem;align-items:flex-start;">
+            <div style="width:32px;height:32px;flex-shrink:0;background:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:900;color:white;">1</div>
+            <div><div style="font-size:0.88rem;font-weight:600;color:var(--white);">We review your inquiry</div><div style="font-size:0.8rem;color:var(--light-mid);">Our export team reviews your requirements and identifies the best product match.</div></div>
+          </div>
+          <div style="display:flex;gap:1rem;align-items:flex-start;">
+            <div style="width:32px;height:32px;flex-shrink:0;background:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:900;color:white;">2</div>
+            <div><div style="font-size:0.88rem;font-weight:600;color:var(--white);">Receive a tailored quote</div><div style="font-size:0.8rem;color:var(--light-mid);">We send product specifications, pricing, certifications, and logistics options.</div></div>
+          </div>
+          <div style="display:flex;gap:1rem;align-items:flex-start;">
+            <div style="width:32px;height:32px;flex-shrink:0;background:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:900;color:white;">3</div>
+            <div><div style="font-size:0.88rem;font-weight:600;color:var(--white);">Technical consultation</div><div style="font-size:0.8rem;color:var(--light-mid);">Our engineers assist with application guidance and system compatibility review.</div></div>
+          </div>
+          <div style="display:flex;gap:1rem;align-items:flex-start;">
+            <div style="width:32px;height:32px;flex-shrink:0;background:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:900;color:white;">4</div>
+            <div><div style="font-size:0.88rem;font-weight:600;color:var(--white);">Order & delivery</div><div style="font-size:0.8rem;color:var(--light-mid);">Secure order placement with full documentation, CoA, and on-time international shipping.</div></div>
+          </div>
+        </div>
+
+        <!-- Map -->
+        <div class="map-embed">
+          <iframe
+            src="https://www.openstreetmap.org/export/embed.html?bbox=112.3,34.5,112.7,34.8&layer=mapnik&marker=34.6526,112.4539"
+            title="Langchao Fire Factory Location — Luoyang, China"
+            loading="lazy">
+          </iframe>
+        </div>
+        <div style="margin-top:0.75rem;font-size:0.78rem;color:var(--light-mid);display:flex;gap:0.4rem;align-items:center;">
+          <span>📍</span> No.119, Longgu Rd., Yibin District, Luoyang, Henan Province, China 471000
+        </div>
+      </div>
+
+      <!-- RIGHT: Form -->
+      <div>
+        <div class="contact-form" style="background:var(--dark-2);border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius-lg);padding:2.5rem;">
+          <div class="form-title">Request a Quote</div>
+          <div class="form-subtitle">All fields marked * are required. We'll reply within 24 hours.</div>
+
+          <div id="form-success" style="display:none;background:rgba(46,204,113,0.1);border:1px solid rgba(46,204,113,0.3);border-radius:var(--radius-md);padding:1.25rem;margin-bottom:1.5rem;color:#2ECC71;font-size:0.88rem;text-align:center;">
+            ✅ Thank you! Your inquiry has been sent. We'll respond within 24 hours.
+          </div>
+
+          <form id="contactForm" onsubmit="handleSubmit(event)">
+
+            <div class="form-group">
+              <label>Name *</label>
+              <input type="text" placeholder="Your Full Name" required />
+            </div>
+
+            <div class="form-group">
+              <label>Email Address *</label>
+              <input type="email" placeholder="john@company.com" required />
+            </div>
+
+            <div class="form-group">
+              <label>Message / Additional Requirements</label>
+              <textarea rows="6" placeholder="Please describe your application, specific requirements, any technical questions, or if you need samples or a technical data sheet..."></textarea>
+            </div>
+
+            <div style="display:flex;align-items:flex-start;gap:0.6rem;margin-bottom:1.5rem;">
+              <input type="checkbox" id="consent" style="accent-color:var(--primary);width:15px;height:15px;flex-shrink:0;margin-top:2px;" required />
+              <label for="consent" style="font-size:0.78rem;color:var(--light-mid);font-weight:400;letter-spacing:0;text-transform:none;cursor:pointer;">I agree that Langchao Fire Technology may contact me regarding this inquiry. I have read and accept the <a href="#" style="color:var(--primary-light);">Privacy Policy</a>.</label>
+            </div>
+
+            <button type="submit" class="btn-primary" style="width:100%;justify-content:center;padding:1rem;font-size:0.95rem;">
+              Send Inquiry
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FAQ SECTION -->
+<section style="padding:5rem 0 7rem; background:var(--dark-2);">
+  <div class="container">
+    <div style="display:grid; grid-template-columns:1fr 1.5fr; gap:5rem; align-items:start;">
+      <div>
+        <div class="section-tag">FAQ</div>
+        <h2 class="section-title" style="font-size:2.2rem;">Frequently Asked <span>Questions</span></h2>
+        <p style="color:var(--light-mid);font-size:0.9rem;line-height:1.7;margin-bottom:2rem;">Can't find your answer here? Contact our technical team directly and we'll be happy to help.</p>
+        <a href="mailto:info@langchaofires.com" class="btn-primary">Email Our Experts</a>
+      </div>
+      <div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-question">What certifications do your foam products hold?<span class="faq-arrow">▾</span></div>
+          <div class="faq-answer">Our foam concentrates are certified to EN 1568 Part 3 (European Standard), ICAO Level B (aviation), CCS (China Classification Society for marine use), and MED/RINA per IMO MSC.1/Circ.1312 for Marine Equipment Directive compliance. We also hold ISO 9001, ISO 14001, and OHSAS 18001 management certifications. UL listing is in process for the North American market.</div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-question">What is the minimum order quantity (MOQ)?<span class="faq-arrow">▾</span></div>
+          <div class="faq-answer">Our standard MOQ is typically 1 ton (approximately 1,000 liters). For sample testing, we can supply smaller quantities. For large projects, we offer competitive pricing on orders of 20 tons or more. Please contact us with your requirements for a tailored quote.</div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-question">Do you ship internationally? What countries do you export to?<span class="faq-arrow">▾</span></div>
+          <div class="faq-answer">Yes, we export to 30+ countries including markets in Europe, the Middle East, Africa, Southeast Asia, and South America. Our experienced export team handles all shipping documentation, dangerous goods classification (where applicable), and customs compliance. We ship via sea freight, air freight, or courier depending on quantity and urgency.</div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-question">Can you provide samples for testing before ordering?<span class="faq-arrow">▾</span></div>
+          <div class="faq-answer">Yes, we can provide product samples along with technical data sheets (TDS), safety data sheets (SDS), and copies of relevant certification documents. Sample charges and shipping costs apply. Please contact us to arrange sample shipment.</div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-question">Do you offer custom or private-label formulations?<span class="faq-arrow">▾</span></div>
+          <div class="faq-answer">Yes, our R&D laboratory can develop custom formulations to meet specific performance targets, climate conditions, or regulatory requirements. We also offer private-label packaging with your brand. Please describe your requirements in the inquiry form and our technical team will get in touch.</div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-question">What is the shelf life of your foam concentrates?<span class="faq-arrow">▾</span></div>
+          <div class="faq-answer">Our foam concentrates have a guaranteed shelf life of 10 years when stored correctly (sealed containers, away from direct sunlight, within temperature range of -20°C to +40°C). A Certificate of Analysis (CoA) is provided with each batch confirming production date and key performance parameters.</div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-question">Are your products PFAS-compliant or fluorine-free?<span class="faq-arrow">▾</span></div>
+          <div class="faq-answer">Our AFFF and fluoroprotein foam products use only C6 pure fluorosurfactants (not C8 PFAS), which have a significantly lower environmental impact. We are actively developing and can supply fluorine-free (PFAS-free) alternatives. Please indicate your regulatory requirements when inquiring and we will advise the best product option.</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="nav-logo">
+        <img src="images/logo.jpg" alt="LCF Langchao Fire" class="nav-logo-img" />
+      </a>
+          <p class="footer-brand-desc">Leading Chinese manufacturer of fire fighting foam concentrates since 1954. Certified to international standards. Serving 30+ countries.</p>
+          <div class="footer-social"><a href="#">f</a><a href="#">in</a><a href="#">▶</a><a href="#">ig</a></div>
+        </div>
+        <div class="footer-col"><h4>Products</h4><div class="footer-links"><a href="products.html">AFFF Foam</a><a href="products.html">AR-AFFF Foam</a><a href="products.html">Protein Foam</a><a href="products.html">High Expansion Foam</a><a href="products.html">ABC Dry Powder</a><a href="products.html">Fireproof Coatings</a></div></div>
+        <div class="footer-col"><h4>Company</h4><div class="footer-links"><a href="about.html">About Us</a><a href="about.html">Our History</a><a href="certifications.html">Certifications</a><a href="contact.html">Contact</a></div></div>
+        <div class="footer-col"><h4>Contact Us</h4><div class="footer-contact-list"><div class="footer-contact-item"><span class="icon">📞</span><span>+86 186 0379 1306</span></div><div class="footer-contact-item"><span class="icon">✉️</span><span>info@langchaofires.com</span></div><div class="footer-contact-item"><span class="icon">📍</span><span>No.119, Longgu Rd., Yibin, Luoyang, China 471000</span></div></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom"><div class="container"><div class="footer-bottom-inner"><p>© 2024 Luoyang Langchao Fire Technology Co., Ltd. All rights reserved.</p><div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms</a></div></div></div></div>
+</footer>
+
+<script>
+  // Navbar scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 60));
+  document.getElementById('menuToggle').addEventListener('click', () => document.getElementById('mobileNav').classList.add('open'));
+  document.getElementById('mobileNavClose').addEventListener('click', () => document.getElementById('mobileNav').classList.remove('open'));
+
+  // FAQ toggle
+  function toggleFaq(item) {
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // Form submit (demo)
+  function handleSubmit(e) {
+    e.preventDefault();
+    const form = document.getElementById('contactForm');
+    const success = document.getElementById('form-success');
+    form.style.opacity = '0.5';
+    form.style.pointerEvents = 'none';
+    setTimeout(() => {
+      form.style.display = 'none';
+      success.style.display = 'block';
+    }, 800);
+  }
+
+  // Scroll animations
+  const fadeEls = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right');
+  const observer = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }), { threshold: 0.1 });
+  fadeEls.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

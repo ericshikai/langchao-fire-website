@@ -1,0 +1,39 @@
+{
+  "title": "Get In Touch",
+  "subtitle": "Contact our technical team for product recommendations, custom formulations, certification documentation, or to request a quote.",
+  "email": "info@langchaofires.com",
+  "phone": "+86 18603791306",
+  "whatsapp": "+86 18603791306",
+  "address": "No.119, Longgu Rd., Yibin, Luoyang, Henan Province, China 471000",
+  "business_hours": "Mon – Fri: 08:30 – 17:30 (CST, UTC+8)",
+  "faqs": [
+    {
+      "question": "What is the minimum order quantity (MOQ)?",
+      "answer": "Our standard MOQ is 1,000 litres (1 IBC tote) for most foam concentrates. Sample orders of 20–50 litres are available for qualification testing. Contact us for specific product MOQs."
+    },
+    {
+      "question": "Do your products carry EN 1568 certification?",
+      "answer": "Yes. Our AFFF, AR-AFFF, FFFP, AR-FFFP, FP, AR-FP, and Protein foam concentrates are tested and certified to EN 1568 Parts 1–4. Full test reports and certificates are available upon request."
+    },
+    {
+      "question": "Can you supply ICAO-certified aviation foam?",
+      "answer": "Yes. Our AFFF 3% and 6% concentrates hold ICAO Level B certification for use in aircraft rescue and fire fighting (ARFF) vehicles. We regularly supply international airports and military air bases."
+    },
+    {
+      "question": "Do you offer PFAS-free or fluorine-free alternatives?",
+      "answer": "Yes. We offer C6-based low-fluorine formulations and are actively developing fully fluorine-free (F3) alternatives. Please specify your regulatory requirements when enquiring."
+    },
+    {
+      "question": "What is your typical lead time for export orders?",
+      "answer": "Standard products are typically ready to ship within 15–25 working days of order confirmation and deposit receipt. Custom formulations or large orders may require 30–45 days. We handle all export documentation including MSDS, COA, and certificate copies."
+    },
+    {
+      "question": "Do you offer custom or private-label formulations?",
+      "answer": "Yes, our R&D laboratory can develop custom formulations to meet specific performance targets, climate conditions, or regulatory requirements. We also offer private-label packaging with your brand."
+    },
+    {
+      "question": "Which shipping terms do you offer?",
+      "answer": "We support FOB Qingdao/Tianjin, CIF, CFR, and EXW terms. For sea freight, products are packed in 20L/25L drums, 200L barrels, or 1000L IBC totes. Air freight is available for sample shipments."
+    }
+  ]
+}

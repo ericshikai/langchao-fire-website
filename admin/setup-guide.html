@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Netlify CMS 部署指南 — Langchao Fire</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0D1117; color: #E6EDF3; line-height: 1.7; }
+  .container { max-width: 860px; margin: 0 auto; padding: 3rem 2rem; }
+  h1 { font-size: 2rem; color: #fff; margin-bottom: 0.5rem; }
+  .subtitle { color: #8B949E; margin-bottom: 3rem; font-size: 1.05rem; }
+  h2 { font-size: 1.25rem; color: #F0A500; margin: 2.5rem 0 1rem; display: flex; align-items: center; gap: 0.5rem; }
+  h3 { font-size: 1rem; color: #58A6FF; margin: 1.5rem 0 0.5rem; }
+  p { color: #C9D1D9; margin-bottom: 0.75rem; }
+  .step { background: #161B22; border: 1px solid #30363D; border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem; }
+  .step-num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: #C0392B; border-radius: 50%; font-size: 0.8rem; font-weight: 700; color: #fff; margin-right: 0.5rem; flex-shrink: 0; }
+  .step-title { font-size: 1.05rem; font-weight: 700; color: #fff; display: flex; align-items: center; margin-bottom: 1rem; }
+  code { background: #21262D; border: 1px solid #30363D; border-radius: 5px; padding: 0.15rem 0.45rem; font-family: 'Consolas', monospace; font-size: 0.85rem; color: #79C0FF; }
+  pre { background: #21262D; border: 1px solid #30363D; border-radius: 8px; padding: 1.25rem; margin: 0.75rem 0; overflow-x: auto; }
+  pre code { background: none; border: none; padding: 0; font-size: 0.88rem; color: #E6EDF3; }
+  .tip { background: rgba(56, 139, 253, 0.1); border-left: 3px solid #58A6FF; padding: 0.75rem 1rem; border-radius: 0 6px 6px 0; margin: 0.75rem 0; font-size: 0.9rem; color: #C9D1D9; }
+  .warn { background: rgba(240, 165, 0, 0.1); border-left: 3px solid #F0A500; padding: 0.75rem 1rem; border-radius: 0 6px 6px 0; margin: 0.75rem 0; font-size: 0.9rem; color: #C9D1D9; }
+  .success { background: rgba(46, 204, 113, 0.1); border-left: 3px solid #2ECC71; padding: 0.75rem 1rem; border-radius: 0 6px 6px 0; margin: 0.75rem 0; font-size: 0.9rem; color: #C9D1D9; }
+  a { color: #58A6FF; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .btn { display: inline-flex; align-items: center; gap: 0.4rem; background: #C0392B; color: #fff; padding: 0.6rem 1.25rem; border-radius: 6px; font-weight: 600; font-size: 0.9rem; text-decoration: none; margin: 0.25rem; }
+  .btn-blue { background: #1A7EF5; }
+  .btn-green { background: #2ECC71; color: #111; }
+  .divider { border: none; border-top: 1px solid #30363D; margin: 2rem 0; }
+  ul { padding-left: 1.5rem; color: #C9D1D9; }
+  ul li { margin-bottom: 0.4rem; }
+  .badge { display: inline-block; background: rgba(192,57,43,0.2); color: #E74C3C; border: 1px solid rgba(192,57,43,0.4); border-radius: 4px; padding: 0.15rem 0.5rem; font-size: 0.75rem; font-weight: 700; margin-left: 0.5rem; }
+  .badge-green { background: rgba(46,204,113,0.15); color: #2ECC71; border-color: rgba(46,204,113,0.3); }
+  .logo { font-size: 1.5rem; font-weight: 900; color: #C0392B; letter-spacing: 0.05em; margin-bottom: 0.25rem; }
+</style>
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+<div class="container">
+
+  <div class="logo">LCF</div>
+  <h1>Netlify CMS 后台集成指南</h1>
+  <p class="subtitle">按照以下步骤，将网站部署到 Netlify 并启用可视化内容管理后台（完全免费）</p>
+
+  <div class="tip">
+    ⏱️ 预计完成时间：<strong>15–30 分钟</strong> &nbsp;|&nbsp;
+    💰 费用：<strong>完全免费</strong>（Netlify 免费套餐）&nbsp;|&nbsp;
+    🛠️ 所需账号：<strong>GitHub + Netlify</strong>
+  </div>
+
+  <hr class="divider">
+
+  <h2>📦 第一阶段：准备 GitHub 仓库</h2>
+
+  <div class="step">
+    <div class="step-title"><span class="step-num">1</span>注册 / 登录 GitHub</div>
+    <p>访问 <a href="https://github.com" target="_blank">github.com</a>，注册或登录你的账号。</p>
+    <a href="https://github.com/signup" target="_blank" class="btn btn-blue">→ 前往 GitHub 注册</a>
+  </div>
+
+  <div class="step">
+    <div class="step-title"><span class="step-num">2</span>创建新仓库</div>
+    <p>点击右上角 <code>+</code> → <code>New repository</code>，填写：</p>
+    <ul>
+      <li>Repository name: <code>langchao-fire-website</code></li>
+      <li>Visibility: <strong>Public</strong>（免费 Netlify CMS 需要公开仓库）</li>
+      <li>不要勾选初始化 README</li>
+    </ul>
+    <p>点击 <strong>Create repository</strong>。</p>
+  </div>
+
+  <div class="step">
+    <div class="step-title"><span class="step-num">3</span>上传网站文件到仓库</div>
+    <p>将下载的网站文件夹内容上传到 GitHub 仓库：</p>
+    <h3>方法一：网页上传（推荐，无需命令行）</h3>
+    <p>在新建的仓库页面点击 <code>uploading an existing file</code>，将整个 <code>website</code> 文件夹内的所有文件拖入上传区域，然后点击 <strong>Commit changes</strong>。</p>
+    <h3>方法二：Git 命令行</h3>
+    <pre><code>cd website
+git init
+git add .
+git commit -m "Initial website commit"
+git branch -M main
+git remote add origin https://github.com/你的用户名/langchao-fire-website.git
+git push -u origin main</code></pre>
+    <div class="warn">⚠️ 确保 <code>admin/</code> 文件夹、<code>_data/</code> 文件夹和 <code>netlify.toml</code> 都包含在上传文件中。</div>
+  </div>
+
+  <hr class="divider">
+
+  <h2>🚀 第二阶段：部署到 Netlify</h2>
+
+  <div class="step">
+    <div class="step-title"><span class="step-num">4</span>注册 / 登录 Netlify</div>
+    <p>访问 <a href="https://netlify.com" target="_blank">netlify.com</a>，使用 GitHub 账号登录（推荐）。</p>
+    <a href="https://app.netlify.com/signup" target="_blank" class="btn btn-green">→ 前往 Netlify 注册</a>
+  </div>
+
+  <div class="step">
+    <div class="step-title"><span class="step-num">5</span>从 GitHub 导入项目</div>
+    <p>在 Netlify 控制台：</p>
+    <ul>
+      <li>点击 <strong>Add new site</strong> → <strong>Import an existing project</strong></li>
+      <li>选择 <strong>Deploy with GitHub</strong></li>
+      <li>授权 Netlify 访问你的 GitHub 账号</li>
+      <li>选择 <code>langchao-fire-website</code> 仓库</li>
+    </ul>
+    <p>部署设置保持默认（无需构建命令），点击 <strong>Deploy site</strong>。</p>
+    <div class="success">✅ 几分钟后网站即可在 Netlify 提供的域名下访问，如 <code>langchao-fire.netlify.app</code></div>
+  </div>
+
+  <div class="step">
+    <div class="step-title"><span class="step-num">6</span>（可选）绑定自定义域名</div>
+    <p>在 Netlify 站点设置 → <strong>Domain management</strong> → <strong>Add custom domain</strong>，输入你的域名并按提示修改 DNS 记录。</p>
+  </div>
+
+  <hr class="divider">
+
+  <h2>🔐 第三阶段：启用 CMS 登录认证</h2>
+
+  <div class="step">
+    <div class="step-title"><span class="step-num">7</span>开启 Netlify Identity 服务</div>
+    <p>在 Netlify 控制台，进入你的站点：</p>
+    <ul>
+      <li>点击顶部菜单 <strong>Integrations</strong> → 搜索 <strong>Identity</strong></li>
+      <li>点击 <strong>Enable Identity</strong></li>
+      <li>在 Identity 设置中，将 <strong>Registration</strong> 改为 <code>Invite only</code>（仅邀请，防止他人注册）</li>
+    </ul>
+    <div class="warn">⚠️ 务必设置为 Invite only，否则任何人都可以注册后台账号！</div>
+  </div>
+
+  <div class="step">
+    <div class="step-title"><span class="step-num">8</span>开启 Git Gateway</div>
+    <p>在 Netlify Identity 设置页面：</p>
+    <ul>
+      <li>滚动到 <strong>Services</strong> 部分</li>
+      <li>点击 <strong>Enable Git Gateway</strong></li>
+    </ul>
+    <p>这允许 CMS 通过 Netlify 写入 GitHub 仓库，无需直接使用 GitHub 凭据。</p>
+  </div>
+
+  <div class="step">
+    <div class="step-title"><span class="step-num">9</span>邀请自己为管理员</div>
+    <p>在 Netlify Identity 页面：</p>
+    <ul>
+      <li>点击 <strong>Invite users</strong></li>
+      <li>输入你的邮箱地址</li>
+      <li>检查邮箱，点击邀请链接设置密码</li>
+    </ul>
+    <div class="success">✅ 完成后即可访问 <code>https://你的站点.netlify.app/admin/</code> 登录后台！</div>
+  </div>
+
+  <hr class="divider">
+
+  <h2>🎨 第四阶段：更新 CMS 配置中的域名</h2>
+
+  <div class="step">
+    <div class="step-title"><span class="step-num">10</span>修改 admin/config.yml 中的网站地址</div>
+    <p>在 GitHub 仓库中编辑 <code>admin/config.yml</code>，将以下两行更新为你的实际 Netlify 域名：</p>
+    <pre><code>site_url: https://你的站点名.netlify.app
+display_url: https://你的站点名.netlify.app</code></pre>
+    <p>保存后 Netlify 会自动重新部署（约1分钟）。</p>
+  </div>
+
+  <hr class="divider">
+
+  <h2>✅ 完成！如何使用后台</h2>
+
+  <div class="step">
+    <div class="step-title">🖥️ 访问后台管理界面</div>
+    <p>后台地址：<code>https://你的站点.netlify.app/admin/</code></p>
+    <ul>
+      <li>使用邀请时设置的邮箱和密码登录</li>
+      <li>左侧导航可以管理：<strong>网站设置、首页内容、产品、认证、联系页面、新闻动态</strong></li>
+      <li>每次保存更改后，Netlify 会自动将修改推送到 GitHub 并重新部署网站</li>
+      <li>部署通常在 <strong>1–2 分钟</strong>内完成</li>
+    </ul>
+    <div class="tip">💡 可以邀请多个管理员账号，每位账号的操作都会以独立 Git commit 记录，方便追溯历史。</div>
+  </div>
+
+  <div class="step">
+    <div class="step-title">📋 后台功能说明</div>
+    <ul>
+      <li>⚙️ <strong>网站设置</strong> — 修改公司名称、联系方式、基本数据</li>
+      <li>🏠 <strong>首页内容</strong> — 修改 Banner 文字、Why Choose Us 内容和图片</li>
+      <li>🧯 <strong>产品管理</strong> — 新增/编辑/删除产品，上传产品图片</li>
+      <li>🏆 <strong>认证管理</strong> — 管理认证证书信息和图片</li>
+      <li>📬 <strong>联系页面</strong> — 修改联系信息和 FAQ 问答</li>
+      <li>📰 <strong>新闻动态</strong> — 发布行业新闻和公司动态</li>
+    </ul>
+  </div>
+
+  <hr class="divider">
+
+  <h2>❓ 常见问题</h2>
+
+  <h3>登录时提示 "Git Gateway Error"？</h3>
+  <p>请确认已在 Netlify Identity → Services 中点击了 <strong>Enable Git Gateway</strong>。</p>
+
+  <h3>CMS 中修改后网站没有更新？</h3>
+  <p>检查 Netlify 控制台的 <strong>Deploys</strong> 标签，查看是否有正在进行的部署或错误信息。</p>
+
+  <h3>忘记后台密码？</h3>
+  <p>在 Netlify Identity 页面找到对应用户，点击 <strong>Reset password</strong> 发送重置邮件。</p>
+
+  <h3>能否使用免费套餐？</h3>
+  <p>可以。Netlify 免费套餐包含：每月 100GB 流量、300 分钟构建时间、1 个并发构建，对于展示型企业网站完全足够。</p>
+
+  <hr class="divider">
+
+  <p style="color:#8B949E; font-size:0.85rem; text-align:center; margin-top:2rem;">
+    Langchao Fire Technology Co., Ltd. &nbsp;|&nbsp; CMS Setup Guide &nbsp;|&nbsp; Generated by NinjaTech AI
+  </p>
+
+</div>
+</body>
+</html>

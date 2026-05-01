@@ -1,0 +1,198 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# 媒体文件上传路径
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+# 网站预览地址
+site_url: https://your-site.netlify.app
+display_url: https://your-site.netlify.app
+
+# 开启编辑预览
+show_preview_links: true
+
+collections:
+
+  # ============================================================
+  # 网站基础设置
+  # ============================================================
+  - name: "settings"
+    label: "⚙️ 网站设置"
+    files:
+
+      - name: "general"
+        label: "基本信息"
+        file: "_data/settings.json"
+        fields:
+          - { label: "公司名称", name: "company_name", widget: "string", default: "Luoyang Langchao Fire Technology Co., Ltd." }
+          - { label: "公司简称", name: "company_short", widget: "string", default: "Langchao Fire" }
+          - { label: "联系邮箱", name: "email", widget: "string", default: "info@langchaofires.com" }
+          - { label: "联系电话", name: "phone", widget: "string", default: "+86 18603791306" }
+          - { label: "公司地址", name: "address", widget: "string", default: "No.119, Longgu Rd., Yibin, Luoyang, China 471000" }
+          - { label: "成立年份", name: "founded_year", widget: "number", default: 1954 }
+          - { label: "年产量（吨）", name: "annual_output", widget: "string", default: "200,000" }
+          - { label: "出口国家数量", name: "countries", widget: "number", default: 30 }
+          - { label: "认证数量", name: "certifications_count", widget: "number", default: 8 }
+
+  # ============================================================
+  # 首页内容
+  # ============================================================
+  - name: "homepage"
+    label: "🏠 首页内容"
+    files:
+
+      - name: "hero"
+        label: "Banner 主图区"
+        file: "_data/hero.json"
+        fields:
+          - { label: "主标题第一行", name: "headline1", widget: "string", default: "Advanced Fire" }
+          - { label: "主标题第二行（高亮）", name: "headline2", widget: "string", default: "Suppression" }
+          - { label: "主标题第三行", name: "headline3", widget: "string", default: "Solutions" }
+          - { label: "副标题描述", name: "description", widget: "text", default: "Manufacturer of EN1568, ICAO & IMO certified foam concentrates and fire suppressants — trusted in 30+ countries since 1954." }
+          - { label: "按钮1文字", name: "btn1_text", widget: "string", default: "Explore Products" }
+          - { label: "按钮1链接", name: "btn1_link", widget: "string", default: "products.html" }
+          - { label: "按钮2文字", name: "btn2_text", widget: "string", default: "Request a Quote" }
+          - { label: "按钮2链接", name: "btn2_link", widget: "string", default: "contact.html" }
+          - { label: "Banner 背景图", name: "bg_image", widget: "image", default: "/images/hero-banner.png" }
+
+      - name: "why_us"
+        label: "Why Choose Us"
+        file: "_data/why_us.json"
+        fields:
+          - { label: "标题", name: "title", widget: "string", default: "Why Choose Langchao Fire" }
+          - { label: "副标题", name: "subtitle", widget: "text" }
+          - { label: "公司图片", name: "image", widget: "image", default: "/images/office-building.jpg" }
+          - label: "核心优势列表"
+            name: "features"
+            widget: "list"
+            fields:
+              - { label: "图标(emoji)", name: "icon", widget: "string" }
+              - { label: "标题", name: "title", widget: "string" }
+              - { label: "描述", name: "desc", widget: "text" }
+
+  # ============================================================
+  # 产品管理
+  # ============================================================
+  - name: "products"
+    label: "🧯 产品管理"
+    folder: "_products"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: "name"
+    fields:
+      - { label: "产品名称", name: "name", widget: "string" }
+      - { label: "产品ID（英文，用于URL）", name: "slug", widget: "string" }
+      - { label: "产品分类", name: "category", widget: "select", options: ["Foam Concentrate", "Dry Powder", "Fireproof Coating", "Anticorrosive Coating", "Other"] }
+      - { label: "产品简介", name: "description", widget: "text" }
+      - { label: "产品图片", name: "image", widget: "image" }
+      - { label: "认证标签", name: "certifications", widget: "list", default: [] }
+      - label: "浓度规格"
+        name: "concentrations"
+        widget: "list"
+        field: { label: "规格", name: "value", widget: "string" }
+      - label: "技术参数"
+        name: "tech_specs"
+        widget: "list"
+        fields:
+          - { label: "参数名", name: "key", widget: "string" }
+          - { label: "参数值", name: "value", widget: "string" }
+      - label: "产品特点"
+        name: "features"
+        widget: "list"
+        fields:
+          - { label: "特点标题", name: "title", widget: "string" }
+          - { label: "特点描述", name: "desc", widget: "text" }
+      - label: "适用场景"
+        name: "applications"
+        widget: "list"
+        field: { label: "场景", name: "value", widget: "string" }
+      - { label: "是否在首页展示", name: "featured", widget: "boolean", default: false }
+      - { label: "排序权重", name: "order", widget: "number", default: 0 }
+
+  # ============================================================
+  # 关于我们页面
+  # ============================================================
+  - name: "about"
+    label: "🏭 关于我们"
+    files:
+
+      - name: "company"
+        label: "公司介绍"
+        file: "_data/about.json"
+        fields:
+          - { label: "页面标题", name: "title", widget: "string", default: "About Langchao Fire" }
+          - { label: "公司简介", name: "intro", widget: "markdown" }
+          - { label: "公司图片", name: "image", widget: "image" }
+          - label: "核心数据"
+            name: "stats"
+            widget: "list"
+            fields:
+              - { label: "数值", name: "value", widget: "string" }
+              - { label: "标签", name: "label", widget: "string" }
+          - label: "发展历程"
+            name: "timeline"
+            widget: "list"
+            fields:
+              - { label: "年份", name: "year", widget: "string" }
+              - { label: "事件描述", name: "event", widget: "text" }
+
+  # ============================================================
+  # 认证页面
+  # ============================================================
+  - name: "certifications"
+    label: "🏆 认证管理"
+    folder: "_certifications"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "认证名称", name: "name", widget: "string" }
+      - { label: "认证全称", name: "full_name", widget: "string" }
+      - { label: "认证机构", name: "issuer", widget: "string" }
+      - { label: "认证类型", name: "type", widget: "select", options: ["Product Certification", "Management System", "Other"] }
+      - { label: "认证描述", name: "description", widget: "markdown" }
+      - { label: "认证图片/证书", name: "image", widget: "image" }
+      - { label: "有效期至", name: "valid_until", widget: "string" }
+      - { label: "适用产品", name: "applicable_products", widget: "list" }
+
+  # ============================================================
+  # 联系页面
+  # ============================================================
+  - name: "contact"
+    label: "📬 联系页面"
+    files:
+      - name: "contact_info"
+        label: "联系信息"
+        file: "_data/contact.json"
+        fields:
+          - { label: "页面标题", name: "title", widget: "string", default: "Get In Touch" }
+          - { label: "页面副标题", name: "subtitle", widget: "text" }
+          - { label: "邮箱", name: "email", widget: "string" }
+          - { label: "电话", name: "phone", widget: "string" }
+          - { label: "WhatsApp", name: "whatsapp", widget: "string" }
+          - { label: "地址", name: "address", widget: "text" }
+          - { label: "工作时间", name: "business_hours", widget: "string" }
+          - label: "FAQ 常见问题"
+            name: "faqs"
+            widget: "list"
+            fields:
+              - { label: "问题", name: "question", widget: "string" }
+              - { label: "回答", name: "answer", widget: "text" }
+
+  # ============================================================
+  # 新闻 / 博客（可选扩展）
+  # ============================================================
+  - name: "blog"
+    label: "📰 新闻动态"
+    folder: "_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "标题", name: "title", widget: "string" }
+      - { label: "发布日期", name: "date", widget: "datetime" }
+      - { label: "封面图", name: "thumbnail", widget: "image" }
+      - { label: "摘要", name: "summary", widget: "text" }
+      - { label: "正文内容", name: "body", widget: "markdown" }
+      - { label: "标签", name: "tags", widget: "list" }
+      - { label: "是否发布", name: "published", widget: "boolean", default: true }

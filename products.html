@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Products | Langchao Fire Technology — Fire Fighting Foam Concentrates</title>
+  <meta name="description" content="Full range of fire fighting foam concentrates: AFFF, AR-AFFF, FFFP, Protein Foam, High Expansion Foam, Dry Powder, and Fireproof Coatings. EN1568, ICAO, CCS certified." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* Product Detail Modal */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(8px);
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-box {
+      background: var(--dark-2);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-lg);
+      max-width: 800px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+    }
+    .modal-header {
+      padding: 2rem 2rem 1.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      position: sticky;
+      top: 0;
+      background: var(--dark-2);
+      z-index: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .modal-close {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--light);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1rem;
+      flex-shrink: 0;
+      transition: var(--transition);
+    }
+    .modal-close:hover { background: var(--primary); }
+    .modal-body { padding: 1.5rem 2rem 2rem; }
+    .modal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .modal-img { border-radius: var(--radius-md); overflow: hidden; background: var(--dark-3); }
+    .modal-img img { width: 100%; object-fit: contain; padding: 2rem; }
+
+    .data-table { width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 0.83rem; }
+    .data-table th { background: rgba(192,57,43,0.12); color: var(--primary-light); font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; padding: 0.6rem 0.85rem; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .data-table td { padding: 0.6rem 0.85rem; color: var(--light-mid); border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .data-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+    /* Sidebar filter */
+    .products-layout { display: grid; grid-template-columns: 260px 1fr; gap: 2.5rem; align-items: start; }
+    .sidebar { position: sticky; top: 90px; }
+    .sidebar-box { background: var(--dark-2); border: 1px solid rgba(255,255,255,0.07); border-radius: var(--radius-md); padding: 1.5rem; margin-bottom: 1.25rem; }
+    .sidebar-title { font-family: var(--font-heading); font-size: 0.8rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white); margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 2px solid var(--primary); display: inline-block; }
+    .filter-group { display: flex; flex-direction: column; gap: 0.5rem; }
+    .filter-item { display: flex; align-items: center; gap: 0.6rem; padding: 0.5rem 0.75rem; border-radius: var(--radius-sm); cursor: pointer; transition: var(--transition); color: var(--light-mid); font-size: 0.85rem; border: 1px solid transparent; }
+    .filter-item:hover, .filter-item.active { color: var(--white); background: rgba(192,57,43,0.1); border-color: rgba(192,57,43,0.25); }
+    .filter-item .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .filter-count { margin-left: auto; font-size: 0.72rem; background: rgba(255,255,255,0.07); padding: 0.15rem 0.45rem; border-radius: 100px; color: var(--light-mid); }
+
+    @media (max-width: 900px) {
+      .products-layout { grid-template-columns: 1fr; }
+      .sidebar { position: static; display: flex; gap: 1rem; flex-wrap: wrap; }
+      .sidebar-box { margin-bottom: 0; flex: 1; min-width: 200px; }
+      .modal-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="container">
+    <div class="top-bar-left">
+      <a href="mailto:info@langchaofires.com">✉ info@langchaofires.com</a>
+      <a href="tel:+8618603791306">📞 +86 186 0379 1306</a>
+    </div>
+    <div class="top-bar-right">
+      <div class="social-links">
+        <a href="#">f</a><a href="#">in</a><a href="#">▶</a><a href="#">ig</a>
+      </div>
+      <a href="#" style="font-size:0.75rem; color:#9CA3AF; border:1px solid rgba(255,255,255,0.1); padding:0.25rem 0.6rem; border-radius:4px;">中文版</a>
+    </div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="images/logo.jpg" alt="LCF Langchao Fire" class="nav-logo-img" />
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="products.html" class="active">Products</a>
+        <a href="certifications.html">Certifications</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="nav-cta">
+        <a href="contact.html" class="btn-primary" style="padding:0.6rem 1.25rem; font-size:0.8rem;">Get a Quote</a>
+      </div>
+      <button class="nav-menu-toggle" id="menuToggle"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-close" id="mobileNavClose">✕</button>
+  <a href="index.html">Home</a><a href="about.html">About</a>
+  <a href="products.html">Products</a><a href="certifications.html">Certifications</a>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="btn-primary" style="margin-top:1rem;">Get a Quote</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span>›</span>
+      <span>Products</span>
+    </div>
+    <div class="section-tag">Full Product Range</div>
+    <h1 class="section-title" style="font-size:clamp(2.5rem,5vw,4rem);">Fire Fighting <span>Products</span></h1>
+    <p class="section-subtitle">Internationally certified foam concentrates, dry powder agents, and fireproof coatings — engineered for reliability in the most critical situations.</p>
+  </div>
+</section>
+
+<!-- PRODUCTS MAIN -->
+<section style="padding: 4rem 0 7rem; background: var(--dark);">
+  <div class="container">
+    <div class="products-layout">
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <div class="sidebar-box">
+          <div class="sidebar-title">Product Category</div>
+          <div class="filter-group">
+            <div class="filter-item active" onclick="filterCat('all', this)">
+              <span class="dot" style="background:#E74C3C;"></span> All Products <span class="filter-count">19</span>
+            </div>
+            <div class="filter-item" onclick="filterCat('foam-fluorine', this)">
+              <span class="dot" style="background:#F39C12;"></span> Fluorine Foam <span class="filter-count">7</span>
+            </div>
+            <div class="filter-item" onclick="filterCat('foam-protein', this)">
+              <span class="dot" style="background:#2ECC71;"></span> Protein Foam <span class="filter-count">3</span>
+            </div>
+            <div class="filter-item" onclick="filterCat('foam-synthetic', this)">
+              <span class="dot" style="background:#3498DB;"></span> Synthetic Foam <span class="filter-count">3</span>
+            </div>
+            <div class="filter-item" onclick="filterCat('powder', this)">
+              <span class="dot" style="background:#9B59B6;"></span> Dry Powder <span class="filter-count">1</span>
+            </div>
+            <div class="filter-item" onclick="filterCat('coating', this)">
+              <span class="dot" style="background:#1ABC9C;"></span> Fireproof Coating <span class="filter-count">3</span>
+            </div>
+            <div class="filter-item" onclick="filterCat('other', this)">
+              <span class="dot" style="background:#E67E22;"></span> Other Agents <span class="filter-count">2</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-box">
+          <div class="sidebar-title">Certification</div>
+          <div class="filter-group">
+            <div class="filter-item" onclick="filterCert('en1568', this)">
+              <span>🏅</span> EN 1568
+            </div>
+            <div class="filter-item" onclick="filterCert('icao', this)">
+              <span>✈️</span> ICAO Level B
+            </div>
+            <div class="filter-item" onclick="filterCert('ccs', this)">
+              <span>⚓</span> CCS Marine
+            </div>
+            <div class="filter-item" onclick="filterCert('med', this)">
+              <span>🚢</span> MED / IMO
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-box" style="background: linear-gradient(135deg, rgba(192,57,43,0.15), rgba(243,156,18,0.08)); border-color: rgba(192,57,43,0.25);">
+          <div style="font-size:1.5rem; margin-bottom:0.75rem;">📋</div>
+          <div style="font-size:0.95rem; font-weight:700; color:var(--white); margin-bottom:0.4rem;">Need a Custom Solution?</div>
+          <div style="font-size:0.8rem; color:var(--light-mid); margin-bottom:1rem; line-height:1.5;">Our R&D team can develop formulations to meet your specific requirements.</div>
+          <a href="contact.html" class="btn-primary" style="padding:0.6rem 1.1rem; font-size:0.78rem; width:100%; justify-content:center;">Contact Our Team</a>
+        </div>
+      </aside>
+
+      <!-- PRODUCTS GRID -->
+      <div>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2rem; flex-wrap:wrap; gap:1rem;">
+          <div style="color:var(--light-mid); font-size:0.85rem;"><span id="productCount">19</span> products found</div>
+          <div style="display:flex; gap:0.5rem; align-items:center;">
+            <span style="font-size:0.8rem; color:var(--light-mid);">Sort:</span>
+            <select style="background:var(--dark-2); border:1px solid rgba(255,255,255,0.1); color:var(--light); padding:0.4rem 0.8rem; border-radius:var(--radius-sm); font-size:0.82rem;">
+              <option>Default</option>
+              <option>Name A–Z</option>
+              <option>Category</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="products-grid" id="allProductsGrid">
+
+          <!-- 1. AFFF -->
+          <div class="product-card" data-cat="foam-fluorine" data-cert="en1568,icao,ccs,med" onclick="location.href='product-afff.html'">
+            <div class="product-card-img">
+              <img src="https://www.langchaofires.com/uploads/20211008/5b8e7f1807cb1a863b19ca54143d7c79_800x800.png" onerror="this.src='https://images.unsplash.com/photo-1563453392212-326f5e854473?w=400&q=80'" alt="AFFF" />
+              <div class="product-card-badge">★ Best Seller</div>
+            </div>
+            <div class="product-card-body">
+              <div class="product-card-cat">Fluorine Foam</div>
+              <div class="product-card-title">Aqueous Film Forming Foam (AFFF)</div>
+              <div class="product-card-desc">C6 fluorosurfactant-based concentrate for rapid Class B hydrocarbon fire suppression. Film-forming effect cuts oxygen supply instantly.</div>
+              <div class="product-card-tags">
+                <span class="product-tag">1% / 3% / 6%</span>
+                <span class="product-tag">EN1568</span>
+                <span class="product-tag">ICAO</span>
+                <span class="product-tag">CCS</span>
+              </div>
+              <div class="product-card-footer">
+                <span class="product-card-link">View Details <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. AR-AFFF -->
+          <div class="product-card" data-cat="foam-fluorine" data-cert="en1568,ccs,med" onclick="location.href='product-ar-afff.html'">
+            <div class="product-card-img">
+              <img src="https://www.langchaofires.com/uploads/20211008/0605bbd4765fe5905ece36c56fbf22d6_800x800.png" onerror="this.src='https://images.unsplash.com/photo-1563453392212-326f5e854473?w=400&q=80'" alt="AR-AFFF" />
+            </div>
+            <div class="product-card-body">
+              <div class="product-card-cat">Fluorine Foam</div>
+              <div class="product-card-title">Alcohol Resistant AFFF (AR-AFFF)</div>
+              <div class="product-card-desc">Polymeric membrane technology for polar solvent fires. Effective on hydrocarbon and water-miscible fuels alike.</div>
+              <div class="product-card-tags">
+                <span class="product-tag">3% / 6%</span>
+                <span class="product-tag">EN1568</span>
+                <span class="product-tag">CCS</span>
+              </div>
+              <div class="product-card-footer">
+                <span class="product-card-link">View Details <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. FFFP -->
+          <div class="product-card" data-cat="foam-fluorine" data-cert="en1568" onclick="location.href='product-fffp.html'">
+            <div class="product-card-img">
+              <img src="https://www.langchaofires.com/uploads/20211008/79fc1cf85841a51f23efef5585e4b9ec_800x800.png" onerror="this.src='https://images.unsplash.com/photo-1563453392212-326f5e854473?w=400&q=80'" alt="FFFP" />
+            </div>
+            <div class="product-card-body">
+              <div class="product-card-cat">Fluoroprotein Foam</div>
+              <div class="product-card-title">Film Forming Fluoroprotein Foam (FFFP)</div>
+              <div class="product-card-desc">Protein stability plus film-forming for superior burnback resistance. Ideal for subsurface injection in storage tanks.</div>
+              <div class="product-card-tags">
+                <span class="product-tag">3% / 6%</span>
+                <span class="product-tag">EN1568</span>
+              </div>
+              <div class="product-card-footer">
+                <span class="product-card-link">View Details <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. AR-FFFP -->
+          <div class="product-card" data-cat="foam-fluorine" data-cert="en1568" onclick="location.href='product-ar-fffp.html'">
+            <div class="product-card-img">
+              <img src="https://www.langchaofires.com/uploads/20211008/6b2a40f2682e227eabf85e392059c787_800x800.png" onerror="this.src='https://images.unsplash.com/photo-1563453392212-326f5e854473?w=400&q=80'" alt="AR-FFFP" />
+            </div>
+            <div class="product-card-body">
+              <div class="product-card-cat">Fluoroprotein Foam</div>
+              <div class="product-card-title">Alcohol Resistant FFFP (AR-FFFP)</div>
+              <div class="product-card-desc">Alcohol-resistant variant combining protein stability, film-forming action, and polar solvent resistance in one formulation.</div>
+              <div class="product-card-tags">
+                <span class="product-tag">3% / 6%</span>
+                <span class="product-tag">EN1568</span>
+              </div>
+              <div class="product-card-footer">
+                <span class="product-card-link">View Details <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. Fluoroprotein FP -->
+          <div class="product-card" data-cat="foam-protein" data-cert="en1568" onclick="location.href='product-fp.html'">
+            <div class="product-card-img">
+              <img src="https://www.langchaofires.com/uploads/20211008/c8095bd2b6d3ae48ad6fbdfa0eb72249_800x800.png" onerror="this.src='https://images.unsplash.com/photo-1563453392212-326f5e854473?w=400&q=80'" alt="FP" />
+            </div>
+            <div class="product-card-body">
+              <div class="product-card-cat">Protein Foam</div>
+              <div class="product-card-title">Fluoroprotein Foam (FP)</div>
+              <div class="product-card-desc">Natural protein hydrolysate enriched with fluorochemical additives for enhanced heat resistance and fuel-shedding properties.</div>
+              <div class="product-card-tags">
+                <span class="product-tag">3% / 6%</span>
+                <span class="product-tag">EN1568</span>
+              </div>
+              <div class="product-card-footer">
+                <span class="product-card-link">View Details <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 6. AR-FP -->
+          <div class="product-card" data-cat="foam-protein" data-cert="en1568" onclick="location.href='product-ar-fp.html'">
+            <div class="product-card-img">
+              <img src="https://www.langchaofires.com/uploads/20211008/bf93b3462baeec21282fa0de74e52914_800x800.png" onerror="this.src='https://images.unsplash.com/photo-1563453392212-326f5e854473?w=400&q=80'" alt="AR-FP" />
+            </div>
+            <div class="product-card-body">
+              <div class="product-card-cat">Protein Foam</div>
+              <div class="product-card-title">Alcohol Resistant Fluoroprotein Foam (AR-FP)</div>
+              <div class="product-card-desc">Combined polar solvent and hydrocarbon fire protection. Excellent burnback resistance with the stability of protein base.</div>
+              <div class="product-card-tags">
+                <span class="product-tag">3% / 6%</span>
+                <span class="product-tag">EN1568</span>
+              </div>
+              <div class="product-card-footer">
+                <span class="product-card-link">View Details <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 7. Protein Foam -->
+          <div class="product-card" data-cat="foam-protein" data-cert="en1568" onclick="location.href='product-protein.html'">
+            <div class="product-card-img">
+              <img src="https://www.langchaofires.com/uploads/20211008/ac9b92887f704f4d4ffd73f16410718c_800x800.png" onerror="this.src='https://images.unsplash.com/photo-1563453392212-326f5e854473?w=400&q=80'" alt="Protein Foam" />
+            </div>
+            <div class="product-card-body">
+              <div class="product-card-cat">Protein Foam</div>
+              <div class="product-card-title">Protein Foam (P3% & P6%)</div>
+              <div class="product-card-desc">Hydrolysed natural protein base with outstanding heat resistance and water retention for long-lasting protection on large fires.</div>
+              <div class="product-card-tags">
+                <span class="product-tag">3% / 6%</span>
+                <span class="product-tag">EN1568</span>
+              </div>
+              <div class="product-card-footer">
+                <span class="product-card-link">View Details <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 8. S-AB -->
+          <div class="product-card" data-cat="foam-synthetic" data-cert="" onclick="location.href='product-s-ab.html'">
+            <div class="product-card-img">
+              <img src="https://www.langchaofires.com/uploads/20211008/51438a90b09e36979578642e373266f1_800x800.png" onerror="this.src='https://images.unsplash.com/photo-1563453392212-326f5e854473?w=400&q=80'" alt="S-AB" />
+            </div>
+            <div class="product-card-body">
+              <div class="product-card-cat">Synthetic Foam</div>
+              <div class="product-card-title">S-3/6-AB Water-Based Extinguishing Agent</div>
+              <div class="product-card-desc">Synthetic surfactant-based water-wetting agent for Class A and B fires. Enhanced penetration and cooling for deep-seated fires.</div>
+              <div class="product-card-tags">
+                <span class="product-tag">3% / 6%</span>
+                <span class="product-tag">Class A/B</span>
+              </div>
+              <div class="product-card-footer">
+                <span class="product-card-link">View Details <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 9. S-AR -->
+          <div class="product-card" data-cat="foam-synthetic" data-cert="" onclick="location.href='product-s-ar.html'">
+            <div class="product-card-img">
+              <img src="https://www.langchaofires.com/uploads/20211008/5c54b57856dd2c830baa63bec9631664_800x800.png" onerror="this.src='https://images.unsplash.com/photo-1563453392212-326f5e854473?w=400&q=80'" alt="S-AR" />
+            </div>
+            <div class="product-card-body">
+              <div class="product-card-cat">Synthetic Foam</div>
+              <div class="product-card-title">S-AR Alcohol Resistance Synthetic Foam</div>
+              <div class="product-card-desc">Fluorine-free synthetic alcohol resistant foam concentrate. Cost-effective protection for both polar and non-polar fuel fires.</div>
+              <div class="product-card-tags">
+                <span class="product-tag">3% / 6%</span>
+                <span class="product-tag">Fluorine-Free</span>
+              </div>
+              <div class="product-card-footer">
+                <span class="product-card-link">View Details <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 10. High Expansion -->
+          <div class="product-card" data-cat="foam-synthetic" data-cert="" onclick="location.href='product-highex.html'">
+            <div class="product-card-img">
+              <img src="https://www.langchaofires.com/uploads/20211008/14871f2819bf9b5cab01992d0c1a2e61_800x800.png" onerror="this.src='https://images.unsplash.com/photo-1563453392212-326f5e854473?w=400&q=80'" alt="High Expansion Foam" />
+            </div>
+            <div class="product-card-body">
+              <div class="product-card-cat">Synthetic Foam</div>
+              <div class="product-card-title">High Expansion Foam (3% / 6%)</div>
+              <div class="product-card-desc">Expansion ratios up to 1000:1 for flooding enclosed spaces. Ideal for warehouses, ship holds, and underground facilities.</div>
+              <div class="product-card-tags">
+                <span class="product-tag">3% / 6%</span>
+                <span class="product-tag">Up to 1000:1</span>
+              </div>
+              <div class="product-card-footer">
+                <span class="product-card-link">View Details <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 11. Class A Foam -->
+          <div class="product-card" data-cat="foam-synthetic" data-cert="" onclick="location.href='product-classa.html'">
+            <div class="product-card-img">
+              <img src="https://www.langchaofires.com/uploads/20211008/2b3564f9d23d489611dd0ceaabe95337_800x800.png" onerror="this.src='https://images.unsplash.com/photo-1563453392212-326f5e854473?w=400&q=80'" alt="Class A Foam" />
+            </div>
+            <div class="product-card-body">
+              <div class="product-card-cat">Synthetic Foam</div>
+              <div class="product-card-title">Class A Foam</div>
+              <div class="product-card-desc">Wildland and structural Class A fire fighting. Reduces water surface tension for deep penetration into combustible materials.</div>
+              <div class="product-card-tags">
+                <span class="product-tag">Class A Fires</span>
+                <span class="product-tag">Wildland</span>
+              </div>
+              <div class="product-card-footer">
+                <span class="product-card-link">View Details <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 12. LCF F500MA -->
+          <div class="product-card" data-cat="foam-fluorine" data-cert="" onclick="location.href='product-f500.html'">
+            <div class="product-card-img">
+              <img src="https://www.langchaofires.com/uploads/20211008/32d963eefeb63bbee77cbb1bb67e5d6c_800x800.png" onerror="this.src='https://images.unsplash.com/photo-1563453392212-326f5e854473?w=400&q=80'" alt="LCF F500MA" />
+              <div class="product-card-badge">New</div>
+            </div>
+            <div class="product-card-body">
+              <div class="product-card-cat">Multi-Agent Foam</div>
+              <div class="product-card-title">LCF F500MA Multi-Purpose Agent</div>
+              <div class="product-card-desc">Advanced multi-purpose fire suppression agent effective on Class A, B, and C fires with encapsulation technology.</div>
+              <div class="product-card-tags">
+                <span class="product-tag">1% / 3% / 6%</span>
+                <span class="product-tag">Multi-Class</span>
+              </div>
+              <div class="product-card-footer">
+                <span class="product-card-link">View Details <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 13. Dust Suppression Foam -->
+          <div class="product-card" data-cat="other" data-cert="" onclick="location.href='product-dust.html'">
+            <div class="product-card-img">
+              <img src="https://www.langchaofires.com/uploads/20211008/5b8e7f1807cb1a863b19ca54143d7c79_800x800.png" onerror="this.src='https://images.unsplash.com/photo-1563453392212-326f5e854473?w=400&q=80'" alt="Dust Suppression Foam" />
+            </div>
+            <div class="product-card-body">
+              <div class="product-card-cat">Specialty Agent</div>
+              <div class="product-card-title">Dust Suppression Foam</div>
+              <div class="product-card-desc">Specially formulated foam for dust control in coal mines, quarries, and industrial environments. Reduces explosion risk.</div>
+              <div class="product-card-tags">
+                <span class="product-tag">Mining</span>
+                <span class="product-tag">Dust Control</span>
+              </div>
+              <div class="product-card-footer">
+                <span class="product-card-link">View Details <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 14. Fluorosurfactant -->
+          <div class="product-card" data-cat="other" data-cert="" onclick="location.href='product-fluorosurfactant.html'">
+            <div class="product-card-img">
+              <img src="https://www.langchaofires.com/uploads/20230628/0c04cfd936632488854d1d0433be41e3_800x800.png" onerror="this.src='https://images.unsplash.com/photo-1563453392212-326f5e854473?w=400&q=80'" alt="Fluorosurfactant" />
+            </div>
+            <div class="product-card-body">
+              <div class="product-card-cat">Raw Material</div>
+              <div class="product-card-title">Fluorosurfactant</div>
+              <div class="product-card-desc">C6 pure fluorosurfactant for foam concentrate formulation. Low surface tension, excellent film-forming performance.</div>
+              <div class="product-card-tags">
+                <span class="product-tag">C6 Pure</span>
+                <span class="product-tag">PFAS Compliant</span>
+              </div>
+              <div class="product-card-footer">
+                <span class="product-card-link">View Details <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 15. ABC Dry Powder -->
+          <div class="product-card" data-cat="powder" data-cert="" onclick="location.href='product-abc.html'">
+            <div class="product-card-img">
+              <img src="https://www.langchaofires.com/uploads/20230410/8af3b383d30ebfc994185508be507904_800x800.jpg" onerror="this.src='https://images.unsplash.com/photo-1563453392212-326f5e854473?w=400&q=80'" alt="ABC Dry Powder" />
+              <div class="product-card-badge">Versatile</div>
+            </div>
+            <div class="product-card-body">
+              <div class="product-card-cat">Dry Powder</div>
+              <div class="product-card-title">ABC Dry Powder</div>
+              <div class="product-card-desc">Multi-purpose dry chemical agent effective on Class A, B, and C fires. Excellent flow, anti-caking, and moisture resistance.</div>
+              <div class="product-card-tags">
+                <span class="product-tag">Class A/B/C</span>
+                <span class="product-tag">Anti-Caking</span>
+              </div>
+              <div class="product-card-footer">
+                <span class="product-card-link">View Details <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 16. Fireproof Coating Interior -->
+          <div class="product-card" data-cat="coating" data-cert="" onclick="location.href='product-coat-int.html'">
+            <div class="product-card-img">
+              <img src="https://www.langchaofires.com/uploads/20220324/79b9fa2bb03a6a971a7b8d7390105569_800x800.jpg" onerror="this.src='https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400&q=80'" alt="Interior Coating" />
+            </div>
+            <div class="product-card-body">
+              <div class="product-card-cat">Fireproof Coating</div>
+              <div class="product-card-title">Cementitious Steel Coating — Interior</div>
+              <div class="product-card-desc">Passive fire protection for internal structural steel. Up to 3-hour fire rating. Easy spray application.</div>
+              <div class="product-card-tags">
+                <span class="product-tag">Interior</span>
+                <span class="product-tag">3hr Rating</span>
+              </div>
+              <div class="product-card-footer">
+                <span class="product-card-link">View Details <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 17. Fireproof Coating Exterior -->
+          <div class="product-card" data-cat="coating" data-cert="" onclick="location.href='product-coat-ext.html'">
+            <div class="product-card-img">
+              <img src="https://www.langchaofires.com/uploads/20220324/e198b68025c93989753397e0395c4824_800x800.jpg" onerror="this.src='https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400&q=80'" alt="Exterior Coating" />
+            </div>
+            <div class="product-card-body">
+              <div class="product-card-cat">Fireproof Coating</div>
+              <div class="product-card-title">Cementitious Steel Coating — Exterior</div>
+              <div class="product-card-desc">Weather-resistant passive fire protection. Withstands UV, humidity, freeze-thaw cycles, and industrial environments.</div>
+              <div class="product-card-tags">
+                <span class="product-tag">Exterior</span>
+                <span class="product-tag">UV Resistant</span>
+              </div>
+              <div class="product-card-footer">
+                <span class="product-card-link">View Details <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 18. Epoxy Zinc Paint -->
+          <div class="product-card" data-cat="coating" data-cert="" onclick="location.href='product-epoxy.html'">
+            <div class="product-card-img">
+              <img src="https://www.langchaofires.com/uploads/20241204/15e2c5849f8b2692b9d7e92854d629be_800x800.png" onerror="this.src='https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400&q=80'" alt="Epoxy Zinc Paint" />
+            </div>
+            <div class="product-card-body">
+              <div class="product-card-cat">Anticorrosive Coating</div>
+              <div class="product-card-title">Epoxy Zinc Paint (2-Component)</div>
+              <div class="product-card-desc">Two-component epoxy zinc-rich primer for maximum corrosion protection on steel structures. Excellent adhesion and chemical resistance.</div>
+              <div class="product-card-tags">
+                <span class="product-tag">2-Component</span>
+                <span class="product-tag">Anticorrosive</span>
+              </div>
+              <div class="product-card-footer">
+                <span class="product-card-link">View Details <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /allProductsGrid -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AFFF MODAL (example) ============ -->
+<div class="modal-overlay" id="modal-afff" onclick="closeModal('afff')">
+  <div class="modal-box" onclick="event.stopPropagation()">
+    <div class="modal-header">
+      <div>
+        <div style="font-size:0.72rem; color:var(--primary-light); font-weight:700; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.4rem;">Fluorine Foam Concentrate</div>
+        <h2 style="font-size:1.6rem; font-family:var(--font-heading); text-transform:uppercase; color:var(--white);">AFFF — Aqueous Film Forming Foam</h2>
+      </div>
+      <button class="modal-close" onclick="closeModal('afff')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-grid">
+        <div>
+          <div class="modal-img">
+            <img src="https://www.langchaofires.com/uploads/20211008/5b8e7f1807cb1a863b19ca54143d7c79_800x800.png" onerror="this.src='https://images.unsplash.com/photo-1563453392212-326f5e854473?w=400&q=80'" alt="AFFF" />
+          </div>
+          <div style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:1rem;">
+            <span class="product-tag" style="padding:0.35rem 0.85rem;">🏅 EN1568 Part 3</span>
+            <span class="product-tag" style="padding:0.35rem 0.85rem;">✈️ ICAO Level B</span>
+            <span class="product-tag" style="padding:0.35rem 0.85rem;">⚓ CCS</span>
+            <span class="product-tag" style="padding:0.35rem 0.85rem;">🚢 MED / IMO</span>
+          </div>
+        </div>
+        <div>
+          <p style="font-size:0.88rem; color:var(--light-mid); line-height:1.7; margin-bottom:1.25rem;">
+            LCF-AFFF consists of a blend of C6 fluorocarbon and hydrocarbon surfactants with various solvents and stabilisers. The unique aqueous film-forming effect immediately cuts off oxygen supply to the fire, while oleophobic properties maintain a stable foam blanket to suppress reignition.
+          </p>
+          <h4 style="font-size:0.8rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--white); margin-bottom:0.75rem;">Applications</h4>
+          <ul style="display:flex; flex-direction:column; gap:0.4rem; margin-bottom:1.25rem;">
+            <li style="font-size:0.83rem; color:var(--light-mid); display:flex; gap:0.5rem; align-items:flex-start;"><span style="color:var(--primary-light);">›</span>Oil fields, depots & storage tanks</li>
+            <li style="font-size:0.83rem; color:var(--light-mid); display:flex; gap:0.5rem; align-items:flex-start;"><span style="color:var(--primary-light);">›</span>Airport Crash Fire Rescue (CFR)</li>
+            <li style="font-size:0.83rem; color:var(--light-mid); display:flex; gap:0.5rem; align-items:flex-start;"><span style="color:var(--primary-light);">›</span>Marine tankers & offshore platforms</li>
+            <li style="font-size:0.83rem; color:var(--light-mid); display:flex; gap:0.5rem; align-items:flex-start;"><span style="color:var(--primary-light);">›</span>Chemical plants & loading facilities</li>
+          </ul>
+        </div>
+      </div>
+      <h4 style="font-size:0.8rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--white); margin:1.5rem 0 0.75rem;">Technical Data</h4>
+      <table class="data-table">
+        <thead><tr><th>Parameter</th><th>AFFF 1%</th><th>AFFF 3%</th><th>AFFF 6%</th></tr></thead>
+        <tbody>
+          <tr><td>Appearance</td><td colspan="3">Light yellowish liquid</td></tr>
+          <tr><td>pH at 20°C</td><td colspan="3">6.0 – 9.5</td></tr>
+          <tr><td>Freezing Point</td><td>-30°C adj.</td><td>-10°C adj.</td><td>-12°C adj.</td></tr>
+          <tr><td>Surface Tension (mN/m)</td><td>17.2 ±10%</td><td>17.1 ±10%</td><td>17.2 ±10%</td></tr>
+          <tr><td>Interfacial Tension (mN/m)</td><td>2.8 ±1.0</td><td>2.4 ±1.0</td><td>2.4 ±1.0</td></tr>
+          <tr><td>Foam Expansion at 20°C</td><td>6.5 ±1.0</td><td>6.4 ±1.0</td><td>6.1 ±1.0</td></tr>
+          <tr><td>25% Drainage Time (min)</td><td>1.9 ±20%</td><td>2.9 ±20%</td><td>3.0 ±20%</td></tr>
+          <tr><td>Extinguishing Time (min)</td><td colspan="3">≤ 3.0</td></tr>
+          <tr><td>25% Fire Resistance Time (min)</td><td colspan="3">≥ 10.0</td></tr>
+          <tr><td>Shelf Life</td><td colspan="3">10 years</td></tr>
+        </tbody>
+      </table>
+      <div style="margin-top:1.5rem;">
+        <a href="contact.html" class="btn-primary" style="margin-right:1rem;">Request Quote</a>
+        <a href="contact.html" class="btn-outline">Download TDS</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="nav-logo">
+        <img src="images/logo.jpg" alt="LCF Langchao Fire" class="nav-logo-img" />
+      </a>
+          <p class="footer-brand-desc">Leading Chinese manufacturer of fire fighting foam concentrates since 1954. Certified to international standards. Serving 30+ countries.</p>
+          <div class="footer-social"><a href="#">f</a><a href="#">in</a><a href="#">▶</a><a href="#">ig</a></div>
+        </div>
+        <div class="footer-col"><h4>Products</h4><div class="footer-links"><a href="products.html">AFFF Foam</a><a href="products.html">AR-AFFF Foam</a><a href="products.html">Protein Foam</a><a href="products.html">FFFP / AR-FFFP</a><a href="products.html">High Expansion Foam</a><a href="products.html">ABC Dry Powder</a><a href="products.html">Fireproof Coatings</a></div></div>
+        <div class="footer-col"><h4>Company</h4><div class="footer-links"><a href="about.html">About Us</a><a href="certifications.html">Certifications</a><a href="contact.html">Contact</a><a href="contact.html">Get a Quote</a></div></div>
+        <div class="footer-col"><h4>Contact Us</h4><div class="footer-contact-list"><div class="footer-contact-item"><span class="icon">📞</span><span>+86 186 0379 1306</span></div><div class="footer-contact-item"><span class="icon">✉️</span><span>info@langchaofires.com</span></div><div class="footer-contact-item"><span class="icon">📍</span><span>No.119, Longgu Rd., Yibin, Luoyang, China 471000</span></div></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container"><div class="footer-bottom-inner"><p>© 2024 Luoyang Langchao Fire Technology Co., Ltd. All rights reserved.</p><div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms</a></div></div></div>
+  </div>
+</footer>
+
+<script>
+  // Navbar
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 60));
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileNav = document.getElementById('mobileNav');
+  const mobileNavClose = document.getElementById('mobileNavClose');
+  menuToggle.addEventListener('click', () => mobileNav.classList.add('open'));
+  mobileNavClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+
+  // Category filter
+  function filterCat(cat, btn) {
+    document.querySelectorAll('.filter-item').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    let count = 0;
+    document.querySelectorAll('#allProductsGrid .product-card').forEach(card => {
+      const show = cat === 'all' || card.dataset.cat === cat;
+      card.style.display = show ? '' : 'none';
+      if (show) count++;
+    });
+    document.getElementById('productCount').textContent = count;
+  }
+
+  // Cert filter
+  function filterCert(cert, btn) {
+    document.querySelectorAll('.sidebar .filter-item').forEach(b => {
+      if (b.onclick && b.onclick.toString().includes('filterCert')) b.classList.remove('active');
+    });
+    btn.classList.add('active');
+    let count = 0;
+    document.querySelectorAll('#allProductsGrid .product-card').forEach(card => {
+      const certs = (card.dataset.cert || '').split(',');
+      const show = certs.includes(cert);
+      card.style.display = show ? '' : 'none';
+      if (show) count++;
+    });
+    document.getElementById('productCount').textContent = count;
+  }
+
+  // Modals
+  function openModal(id) {
+    const m = document.getElementById('modal-' + id);
+    if (m) { m.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  }
+  function closeModal(id) {
+    const m = document.getElementById('modal-' + id);
+    if (m) { m.classList.remove('open'); document.body.style.overflow = ''; }
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') document.querySelectorAll('.modal-overlay.open').forEach(m => { m.classList.remove('open'); document.body.style.overflow = ''; });
+  });
+
+  // Scroll animations
+  const fadeEls = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right');
+  const observer = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }), { threshold: 0.1 });
+  fadeEls.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
