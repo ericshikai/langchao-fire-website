@@ -7,7 +7,7 @@ media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
 # 网站预览地址
-site_url: https://your-site.netlify.app
+site_url: https://langchaofires-website.netlify.app
 display_url: https://your-site.netlify.app
 
 # 开启编辑预览
