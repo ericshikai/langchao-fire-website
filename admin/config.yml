@@ -8,8 +8,7 @@ public_folder: "/images/uploads"
 
 # 网站预览地址
 site_url: https://langchaofires-website.netlify.app
-display_url: https://langchaofires-website.app
-
+display_url: https://langchaofires-website.netlify.app
 # 开启编辑预览
 show_preview_links: true
 
